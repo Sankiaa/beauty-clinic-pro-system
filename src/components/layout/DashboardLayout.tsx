@@ -16,6 +16,7 @@ import {
   Scissors,
   Receipt,
   Languages,
+  LayoutDashboard,
 } from "lucide-react";
 import NotificationsPopover from "@/components/notifications/NotificationsPopover";
 import SettingsDialog from "@/components/settings/SettingsDialog";
@@ -50,6 +51,16 @@ const DashboardLayout: React.FC<Props> = ({ children, activePage, setActivePage 
           <h1 className="text-xl font-bold text-primary-foreground hidden md:block">
             مركز غُزل للجمال
           </h1>
+          {/* Dashboard button for mobile and desktop */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setActivePage("dashboard")}
+            className="text-primary flex items-center gap-1 hover:bg-primary/10"
+          >
+            <LayoutDashboard className="h-4 w-4" />
+            <span className="hidden md:inline">لوحة التحكم</span>
+          </Button>
         </div>
         
         <div className="flex items-center gap-2 md:gap-4 justify-center flex-1">
@@ -116,6 +127,15 @@ const DashboardLayout: React.FC<Props> = ({ children, activePage, setActivePage 
         <aside className="w-20 md:w-64 bg-sidebar border-s border-border flex flex-col items-center md:items-stretch p-3">
           <div className="space-y-2 flex-1">
             <h2 className="text-lg font-semibold hidden md:block mb-4 px-2">القائمة الرئيسية</h2>
+            
+            <Button
+              variant={activePage === "dashboard" ? "default" : "ghost"}
+              className="w-full justify-start gap-2"
+              onClick={() => setActivePage("dashboard")}
+            >
+              <LayoutDashboard className="h-5 w-5" />
+              <span className="hidden md:inline">لوحة التحكم</span>
+            </Button>
             
             <Button
               variant={activePage === "appointments" ? "default" : "ghost"}
