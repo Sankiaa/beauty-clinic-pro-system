@@ -6,7 +6,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import {
-  Bell,
   Calendar,
   LogOut,
   Moon,
@@ -18,6 +17,8 @@ import {
   Receipt,
   Languages,
 } from "lucide-react";
+import NotificationsPopover from "@/components/notifications/NotificationsPopover";
+import SettingsDialog from "@/components/settings/SettingsDialog";
 
 type Props = {
   children: React.ReactNode;
@@ -93,22 +94,10 @@ const DashboardLayout: React.FC<Props> = ({ children, activePage, setActivePage 
           </Button>
           
           {/* Notifications */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            <Bell className="h-5 w-5" />
-          </Button>
+          <NotificationsPopover />
           
           {/* Settings */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            <Settings className="h-5 w-5" />
-          </Button>
+          <SettingsDialog />
           
           {/* Logout */}
           <Button
